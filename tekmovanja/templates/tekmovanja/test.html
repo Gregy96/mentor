@@ -1,0 +1,14 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <form id="search-form">
+        <input type="text" id="term" class="term" name="Search" value="Search" autocomplete="off" />
+        <input type="submit" name="Search" value="Search" />
+      </form>
+
+    <script>
+            $('#search-form .term').bind('input', function(){
+                if ($("#term").val().length < 3)
+                {console.log("Ne zahtevaj klica");}
+                else
+                {console.log($("#term").val());}
+            });
+    </script>

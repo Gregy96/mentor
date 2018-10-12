@@ -1,0 +1,16 @@
+{% extends "admin/base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block footer %}
+<h1 id="content-main">
+    <a href="{% url 'admin:index' %}">
+        <a href="{% url 'tekmovanja:izpis'  %}"><p style="text-align:center">Izpis</p></a>
+    </a>
+</h1>
+{% endblock %}
+
+
+{% block content-main %}{% endblock %}

@@ -1,0 +1,32 @@
+{% load static %}
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'tekmovanja/login.css' %}">
+        <script src="{% static 'tekmovanja/login.js' %}"></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <form method='POST' action="javascript:test()">
+                {% csrf_token %}
+            <div class="imgcontainer" id=naslov>
+                Login
+            </div>
+        
+            <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" id="usr" required>
+        
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" id="pss" required>
+        
+            <button type="submit" onclick="login();">Login</button>
+            
+            </div>
+        
+            <div class="container" id="status" style="color:red; text-align: center; background-color:#f1f1f1">
+            </div>
+            <p><center>Še nimate računa? <a href="{% url 'tekmovanja:registration' %}" >Registracija</a></center></p>
+        </form>
+    </body> 
+</html>

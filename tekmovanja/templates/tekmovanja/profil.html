@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'tekmovanja/profil/profil.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'tekmovanja/header.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+        <div class="header">
+                <a href="{% url 'tekmovanja:index' %}" class="logo">Domov</a>
+                <div class="header-right">
+                  <a class="active" href="{% url 'tekmovanja:tekmovanja'  %}">Tekmovanja</a>
+                  <a href="{% url 'tekmovanja:profil' %}">Moj profil</a>
+                  <a href="{% url 'tekmovanja:login' %}">Logout</a>
+        
+                </div>
+        </div> 
+<form method='POST' action="javascript:reg()">
+  <div class="container">
+    <h1>Vaš profil</h1>
+    <p>Tukaj lahko spremenite svoje podatke</p>
+    <hr>
+
+    <label for="Ime"><b>Ime</b></label>
+    <input type="text" value="{{ Ime }}" id="Ime">
+
+    <label for="Priimek"><b>Priimek</b></label>
+    <input type="text" value="{{ Priimek }}" id="Priimek" required>
+
+    <label for="Up ime"><b>Uporabniško ime</b></label>
+    <input type="text" value="{{ UpIme }}" id="UpIme" required>
+
+    <label for="email"><b>Email</b></label>
+    <input type="email" value="{{ mail }}" id="email" required>
+
+   <!-- <label for="sola"><b>Šola</b></label>
+    <select id="sola">
+            <option value="{{ sola }}">{{ sola }}</option>
+      </select>
+    !-->
+    <!--<input list="sola" name="sole" id="sol" >
+      <datalist id="sola">
+          
+      </datalist>
+    !-->
+
+    <label for="geslo"><b>Geslo</b></label>
+    <input type="password" placeholder="Vnesite geslo" id="geslo" required>
+
+    <label for="geslo_ponovno"><b>Ponovite geslo</b></label>
+    <input type="password" placeholder="Ponovite geslo" id="geslo_ponovno" required>
+    <hr>
+    <p id="status" style="text-align:center"></p>
+
+    <button type="submit" class="registerbtn">Spremenite podatke</button>
+  </div>
+  
+</form>
+<script src="{% static 'tekmovanja/profil/profil.js' %}"></script> 
+</script>
+</body>
+</html>
+

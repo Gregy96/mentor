@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'tekmovanja/registration/registration.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<form method='POST' action="javascript:reg()">
+  <div class="container">
+    <h1>Register</h1>
+    <p>Izpolnite podatke, da se lahko registrirate v sistem.</p>
+    <hr>
+
+    <label for="Ime"><b>Ime</b></label>
+    <input type="text" placeholder="Vnesite ime" id="Ime" required>
+
+    <label for="Priimek"><b>Priimek</b></label>
+    <input type="text" placeholder="Vnesite priimek" id="Priimek" required>
+
+    <label for="Up ime"><b>Uporabniško ime</b></label>
+    <input type="text" placeholder="Vnesite uporabniško ime" id="UpIme" required>
+
+    <label for="email"><b>Email</b></label>
+    <input type="email" placeholder="Vnesite Email" id="email" required>
+
+    <label for="sola"><b>Šola</b></label>
+    <select id="sola">
+        
+      </select>
+    
+    <!--<input list="sola" name="sole" id="sol" >
+      <datalist id="sola">
+          
+      </datalist>
+    !-->
+
+    <label for="geslo"><b>Geslo</b></label>
+    <input type="password" placeholder="Vnesite geslo" id="geslo" required>
+
+    <label for="geslo_ponovno"><b>Ponovite geslo</b></label>
+    <input type="password" placeholder="Ponovite geslo" id="geslo_ponovno" required>
+    <hr>
+    <p id="status" style="text-align:center"></p>
+
+    <button type="submit" class="registerbtn">Registracija</button>
+    <p><center>Že imate račun? <a href="{% url 'tekmovanja:login' %}" >Prijava</a></center></p>
+  </div>
+  
+</form>
+<script src="{% static 'tekmovanja/registration/registration.js' %}"></script> 
+</script>
+</body>
+</html>
+

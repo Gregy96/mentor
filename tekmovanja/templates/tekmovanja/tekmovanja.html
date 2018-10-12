@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Prijava na tekmovanje</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'tekmovanja/tekmovanja/tekmovanja.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'tekmovanja/header.css' %}">
+  <script src="{% static 'tekmovanja/tekmovanja/tekmovanja.js' %}"></script> 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <a href="{% url 'tekmovanja:index' %}" class="logo">Domov</a>
+        <div class="header-right">
+          <a class="active" href="{% url 'tekmovanja:tekmovanja'  %}">Tekmovanja</a>
+          <a href="{% url 'tekmovanja:profil' %}">Moj profil</a>
+          <a href="{% url 'tekmovanja:login' %}">Logout</a>
+        </div>
+</div> 
+<br>
+{% if sez_tek %}
+<div class="container">
+        <table class="table table-hover">
+                <thead>
+                        <tr>
+                          <th>ID tekmovanja</th>
+                          <th>Ime tekmovanja</th>
+                          <th>status</th>
+                          <th>prijava/odjava</th>
+                        </tr>
+                      </thead>
+                      
+    <tbody>
+    {% for tekmovanje in sez_tek %}
+        
+    <tr>
+            
+                <td>{{ tekmovanje.ID_Tekmovanje }}</td>
+                <td>{{ tekmovanje.Ime_Tekmovanje }}</td>
+                {% if tekmovanje.sodeluje == '0' %}
+                  <td><font color="green">Prijavljen</font></td>
+                  <td><button class="odjava" onclick="odjava('{{ tekmovanje.ID_Tekmovanje }}','{{ id }}');">Odjava</button></td>
+                {% else %}
+                <td><font color="red">Odjavljen</font></td>
+
+                  <td><button class="prijava" onclick="prijava('{{ tekmovanje.ID_Tekmovanje }}','{{ id }}');">Prijava</button></td>
+                {% endif %}         
+    </tr>
+        
+    {% endfor %}
+   
+</tbody>
+</table>
+{% else %}
+    <p>Nobenih tekmovanj ni na sporedu.</p>
+{% endif %}
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Prijava na tekmovanje</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'tekmovanja/izpis/izpis.css' %}">
+  <script src="{% static 'tekmovanja/izpis/izpis.js' %}"></script> 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body> 
+<br>
+{% if rows%}
+<div class="container">
+        <input type="text" id="tekmovanja" onkeyup="tekmovanja()" placeholder="Išči po imenih tekmovanja...">
+        <input type="text" id="sola" onkeyup="sola()" placeholder="Išči po imenih šole...">
+        
+        <table id="myTable">
+          <tr class="header">
+            <th style="width:60%;">Ime</th>
+            <th style="width:40%;">Priimek</th>
+            <th style="width:40%;">Up_Ime</th>
+            <th style="width:40%;">Mail</th>
+            <th style="width:40%;">Ime_Tekmovanja</th>
+            <th style="width:40%;">Ime_Sole</th>
+          </tr>
+          {% for vrstica in rows %}
+            <tr>
+                <td>{{ vrstica.0 }}</td>
+                <td>{{ vrstica.1 }}</td>
+                <td>{{ vrstica.2 }}</td>
+                <td>{{ vrstica.3 }}</td>
+                <td>{{ vrstica.4 }}</td>
+                <td>{{ vrstica.5 }}</td>
+               
+            </tr>
+        
+          {% endfor %}
+
+        </table> 
+</div>
+{% else %}
+    <p>Nobenih udeležencev ni na sporedu.</p>
+{% endif %}
+
+
+</body>
+</html>
+
+

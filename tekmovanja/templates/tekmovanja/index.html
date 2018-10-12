@@ -1,0 +1,61 @@
+{% load static %}
+
+<html>
+        <head>
+            <link rel="stylesheet" type="text/css" href="{% static 'tekmovanja/header.css' %}">
+              <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'tekmovanja/izpis/izpis.css' %}">
+  <script src="{% static 'tekmovanja/izpis/izpis.js' %}"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+           
+        </head>
+        <body>
+<div class="header">
+        <a href="{% url 'tekmovanja:index' %}" class="logo">Domov</a>
+        <div class="header-right">
+          <a class="active" href="{% url 'tekmovanja:tekmovanja'  %}">Tekmovanja</a>
+          <a href="{% url 'tekmovanja:profil' %}">Moj profil</a>
+          <a href="{% url 'tekmovanja:login' %}">Logout</a>
+
+        </div>
+</div> 
+    Pozdravljeni {{ ime }} <br><br>
+
+    Na šoli niso bili potrjeni še naslednji ljudje:
+
+
+
+
+
+
+    Na šoli {{ sola }} so še naslednji mentorji:
+    {% if mentorji %}
+        <table id="myTable">
+              <tr class="header">
+                <th style="width:60%;">Ime</th>
+                <th style="width:40%;">Up_Ime</th>
+                <th style="width:40%;">Mail</th>
+                <th style="width:40%;">Ime_Tekmovanja</th>
+              </tr>
+        {% for mentor in mentorji %}
+            <tr>
+                <td>{{ mentor.Ime }}</td>
+                <td>{{ mentor.UpIme }}</td>
+                <td>{{ mentor.mail }}</td>
+                {% if mentor.tekmovanja == 0 %}
+                    <td>Neprijavljen</td>
+                {% else %}
+                    <td>
+                    {% for s in mentor.tekmovanja %}
+                           {{ s }} <br>
+                    {% endfor %}
+                    </td>
+                {% endif %}
+
+            </tr>
+            {% endfor %}
+    {% else %}
+        <p>Nobenega mentorja ni.</p>
+    {% endif %}
+    </body>
+</html>
